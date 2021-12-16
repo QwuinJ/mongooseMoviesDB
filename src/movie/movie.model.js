@@ -16,6 +16,22 @@ const movieSchema = new mongoose.Schema({
 		max: 10,
 		default: 5,
 	},
+	genre: {
+		type: String,
+		default: 'Not specified',
+	},
+	released: {
+		type: Number,
+		default: 0,
+	},
+	director: {
+		type: String,
+		default: 'Not specified',
+	},
+	award: {
+		type: Boolean,
+		default: false,
+	},
 });
 
 const Movie = mongoose.model('Movie', movieSchema);
