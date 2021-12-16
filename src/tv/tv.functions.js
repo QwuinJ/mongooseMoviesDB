@@ -9,3 +9,12 @@ exports.addTV = async (tvObj) => {
 		console.log(e);
 	}
 };
+
+exports.removeTV = async (tvObj) => {
+	try {
+		await TV.deleteOne({ title: tvObj.title });
+		console.log(`Deleted ${tvObj.title}`);
+	} catch (e) {
+		console.log(e);
+	}
+};

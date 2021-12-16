@@ -12,6 +12,7 @@ const {
 	listAllByGenre,
 	sortByRating,
 } = require('./movie/movie.functions');
+const { addTV, removeTV } = require('./tv/tv.functions');
 const mongoose = require('mongoose');
 
 const app = async (args) => {
@@ -52,33 +53,51 @@ const app = async (args) => {
 			await updateOneByName(updateObj);
 			mongoose.disconnect();
 			console.log('ended connection');
-		} else if (args.findActor) {
+		} else if (args.findMovieActor) {
 			console.log('listing movies...');
 			const actorObj = { actor: args.actor };
 			await findActor(actorObj);
 			mongoose.disconnect();
 			console.log('ended connection');
-		} else if (args.findGenre) {
+		} else if (args.findMovieGenre) {
 			console.log(`listing ${args.genre} movies...`);
 			const genreObj = { genre: args.genre };
 			await findGenre(genreObj);
 			mongoose.disconnect();
 			console.log('ended connection');
-		} else if (args.findAwards) {
+		} else if (args.findMovieAwards) {
 			console.log(`listing titles with awards...`);
 			await findAwards();
 			mongoose.disconnect();
-		} else if (args.listAll) {
+		} else if (args.listAllMovies) {
 			console.log('listing all movies...');
 			await listAll();
 			mongoose.disconnect();
-		} else if (args.listGenres) {
+		} else if (args.listMovieGenres) {
 			console.log('listing all movie genres...');
 			await listAllByGenre();
 			mongoose.disconnect();
-		} else if (args.sortByRating) {
+		} else if (args.sortMovieByRating) {
 			console.log('listing movies by rating');
 			await sortByRating();
+			mongoose.disconnect();
+		} else if (args.addTV) {
+			console.log('Adding tv show...');
+			const tvObj = {
+				title: args.title,
+				actor: args.actor,
+				rating: args.rating,
+				genre: args.genre,
+				released: args.released,
+				director: args.director,
+				award: args.award,
+			};
+			await addTV(tvObj);
+			mongoose.disconnect();
+		} else if (args.removeTV) {
+			console.log('removing tv show...');
+			const tvObj = { title: args.title };
+			await removeTV(tvObj);
 			mongoose.disconnect();
 		} else {
 			console.log('INVALID COMMAND. TRY AGAIN.');
