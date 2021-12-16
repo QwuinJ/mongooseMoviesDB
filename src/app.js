@@ -16,7 +16,7 @@ const mongoose = require('mongoose');
 
 const app = async (args) => {
 	try {
-		if (args.add) {
+		if (args.addMovie) {
 			console.log('adding movie...');
 			const movieObj = {
 				title: args.title,
@@ -30,19 +30,19 @@ const app = async (args) => {
 			await addMovie(movieObj);
 			mongoose.disconnect();
 			console.log('ended connection');
-		} else if (args.remove) {
+		} else if (args.removeMovie) {
 			console.log('removing movie...');
 			const movieObj = { title: args.title };
 			await removeMovieByName(movieObj);
 			mongoose.disconnect();
 			console.log('ended connection');
-		} else if (args.read) {
+		} else if (args.readMovie) {
 			console.log('reading movie...');
 			const readObj = { title: args.title };
 			await readMovieObject(readObj);
 			mongoose.disconnect();
 			console.log('ended connection');
-		} else if (args.update) {
+		} else if (args.updateMovie) {
 			console.log('updating movie...');
 			const updateObj = {
 				title: args.title,
