@@ -7,6 +7,10 @@ const {
 	updateOneByName,
 	findActor,
 	findGenre,
+	findAwards,
+	listAll,
+	listAllByGenre,
+	sortByRating,
 } = require('./movie/movie.functions');
 const mongoose = require('mongoose');
 
@@ -60,6 +64,22 @@ const app = async (args) => {
 			await findGenre(genreObj);
 			mongoose.disconnect();
 			console.log('ended connection');
+		} else if (args.findAwards) {
+			console.log(`listing titles with awards...`);
+			await findAwards();
+			mongoose.disconnect();
+		} else if (args.listAll) {
+			console.log('listing all movies...');
+			await listAll();
+			mongoose.disconnect();
+		} else if (args.listGenres) {
+			console.log('listing all movie genres...');
+			await listAllByGenre();
+			mongoose.disconnect();
+		} else if (args.sortByRating) {
+			console.log('listing movies by rating');
+			await sortByRating();
+			mongoose.disconnect();
 		} else {
 			console.log('INVALID COMMAND. TRY AGAIN.');
 			mongoose.disconnect();

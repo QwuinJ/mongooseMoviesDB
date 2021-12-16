@@ -53,7 +53,7 @@ exports.findActor = async (actorObj) => {
 		console.log('found function');
 		const actorFind = actorObj.actor;
 		const result = await Movie.find({ actor: actorFind });
-		console.log(result);
+		console.log(result.map((result) => result.title).sort());
 	} catch (e) {
 		console.log(e);
 	}
@@ -73,7 +73,37 @@ exports.findAwards = async () => {
 	try {
 		console.log('found function');
 		const result = await Movie.find({ award: true });
-		console.log(result);
+		console.log(result.map((result) => result.title).sort());
+	} catch (e) {
+		console.log(e);
+	}
+};
+
+exports.listAll = async () => {
+	try {
+		console.log('found function');
+		const result = await Movie.find();
+		console.log(result.map((result) => result).sort());
+	} catch (e) {
+		console.log(e);
+	}
+};
+
+exports.listAllByGenre = async () => {
+	try {
+		console.log('found function');
+		const result = await Movie.find();
+		console.log(result.map((result) => result.genre).sort());
+	} catch (e) {
+		console.log(e);
+	}
+};
+
+exports.sortByRating = async () => {
+	try {
+		console.log('found fucntion');
+		const result = await Movie.find().sort({ rating: -1 });
+		console.log(`Title: ${result.title} \nRating: ${result.rating}/10`);
 	} catch (e) {
 		console.log(e);
 	}
