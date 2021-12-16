@@ -14,6 +14,7 @@ const app = async (args) => {
 			await addMovie(movieObj);
 			console.log('add movie');
 			mongoose.disconnect();
+			console.log('end connection');
 		} else if (args.remove) {
 			// remove function
 			console.log('remove movie');
