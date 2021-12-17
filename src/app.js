@@ -41,24 +41,18 @@ const app = async (args) => {
 			};
 			await addMovie(movieObj);
 			mongoose.disconnect();
-			console.log('ended connection');
 			// remove movie
 		} else if (args.removeMovie) {
-			console.log('removing movie...');
 			const movieObj = { title: args.title };
 			await removeMovieByName(movieObj);
 			mongoose.disconnect();
-			console.log('ended connection');
 			// read one movie entry
 		} else if (args.readMovie) {
-			console.log('reading movie...');
 			const readObj = { title: args.title };
 			await readMovieObject(readObj);
 			mongoose.disconnect();
-			console.log('ended connection');
 			// update one movie
 		} else if (args.updateMovie) {
-			console.log('updating movie...');
 			const updateObj = {
 				title: args.title,
 				key: args.key,
@@ -66,43 +60,33 @@ const app = async (args) => {
 			};
 			await updateOneMovie(updateObj);
 			mongoose.disconnect();
-			console.log('ended connection');
 			// list movies with a specific actor
 		} else if (args.listActorMovie) {
-			console.log('listing movies...');
 			const actorObj = { actor: args.actor };
 			await findActorMovie(actorObj);
 			mongoose.disconnect();
-			console.log('ended connection');
 			// list movies in a specific genre
 		} else if (args.listGenreMovie) {
-			console.log(`listing ${args.genre} movies...`);
 			const genreObj = { genre: args.genre };
 			await findGenreMovie(genreObj);
 			mongoose.disconnect();
-			console.log('ended connection');
 			// list movies with awards
 		} else if (args.findAwardsMovie) {
-			console.log(`listing titles with awards...`);
 			await findAwardsMovie();
 			mongoose.disconnect();
 			// list all movies
 		} else if (args.listAllMovies) {
-			console.log('listing all movies...');
 			await listAllMovie();
 			mongoose.disconnect();
 		} else if (args.listGenreMovie) {
-			console.log('listing all movie genres...');
 			await listAllByGenreMovie();
 			mongoose.disconnect();
 			// sort movies by rating
 		} else if (args.sortByRatingMovie) {
-			console.log('listing movies by rating');
 			await sortByRatingMovie();
 			mongoose.disconnect();
 			// add TV show
 		} else if (args.addTV) {
-			console.log('Adding tv show...');
 			const tvObj = {
 				title: args.title,
 				actor: args.actor,
@@ -116,7 +100,6 @@ const app = async (args) => {
 			mongoose.disconnect();
 			// remove TV show
 		} else if (args.removeTV) {
-			console.log('removing tv show...');
 			const tvObj = { title: args.title };
 			await removeTV(tvObj);
 			mongoose.disconnect();
@@ -140,7 +123,6 @@ const app = async (args) => {
 			mongoose.disconnect();
 			// list all TV shows in specified genre
 		} else if (args.findGenreTV) {
-			console.log(`listing ${args.genre} TV shows...`);
 			const genreObj = { genre: args.genre };
 			await findGenreTV(genreObj);
 			mongoose.disconnect();
