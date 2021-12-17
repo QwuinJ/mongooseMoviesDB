@@ -49,7 +49,7 @@ exports.listAllTV = async () => {
 	}
 };
 
-// look at one specific TV show object
+// look at one TV show object
 exports.readTVObject = async (readObj) => {
 	try {
 		const result = await TV.findOne({ title: readObj.title });

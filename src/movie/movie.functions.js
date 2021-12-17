@@ -1,6 +1,6 @@
-const { mongoose } = require('mongoose');
 const Movie = require('./movie.model');
 
+// add Movie
 exports.addMovie = async (movieObj) => {
 	try {
 		const newMovie = new Movie(movieObj);
@@ -13,6 +13,7 @@ exports.addMovie = async (movieObj) => {
 	}
 };
 
+// remove movie
 exports.removeMovieByName = async (movieObj) => {
 	try {
 		await Movie.deleteOne({ title: movieObj.title });
@@ -22,6 +23,7 @@ exports.removeMovieByName = async (movieObj) => {
 	}
 };
 
+// view one movie object
 exports.readMovieObject = async (readObj) => {
 	try {
 		const result = await Movie.findOne({ title: readObj.title });
@@ -31,6 +33,7 @@ exports.readMovieObject = async (readObj) => {
 	}
 };
 
+// update movie entry
 exports.updateOneMovie = async (updateObj) => {
 	try {
 		const newKey = updateObj.key;
@@ -47,19 +50,19 @@ exports.updateOneMovie = async (updateObj) => {
 	}
 };
 
+// list movies with a specific actor
 exports.findActorMovie = async (actorObj) => {
 	try {
-		const actorFind = actorObj.actor;
-		const result = await Movie.find({ actor: actorFind });
+		const result = await Movie.find({ actor: actorObj.actor });
 		console.log(result.map((result) => result.title).sort());
 	} catch (e) {
 		console.log(e);
 	}
 };
 
+// list movies in a specific genre
 exports.findGenreMovie = async (genreObj) => {
 	try {
-		console.log('found function');
 		const result = await Movie.find({ genre: genreObj.genre });
 		console.log(result.map((result) => result.title).sort());
 	} catch (e) {
@@ -67,9 +70,9 @@ exports.findGenreMovie = async (genreObj) => {
 	}
 };
 
+// list all movies with awards
 exports.findAwardsMovie = async () => {
 	try {
-		console.log('found function');
 		const result = await Movie.find({ award: true });
 		console.log(result.map((result) => result.title).sort());
 	} catch (e) {
@@ -77,20 +80,11 @@ exports.findAwardsMovie = async () => {
 	}
 };
 
+// list all movies
 exports.listAllMovie = async () => {
 	try {
 		const result = await Movie.find();
 		console.log(result.map((result) => result).sort());
-	} catch (e) {
-		console.log(e);
-	}
-};
-
-exports.listAllByGenreMovie = async () => {
-	try {
-		console.log('found function');
-		const result = await Movie.find();
-		console.log(result.map((result) => result.genre).sort());
 	} catch (e) {
 		console.log(e);
 	}

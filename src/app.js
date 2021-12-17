@@ -9,13 +9,13 @@ const {
 	findGenreMovie,
 	findAwardsMovie,
 	listAllMovie,
-	listAllByGenreMovie,
 	sortByRatingMovie,
 } = require('./movie/movie.functions');
 const {
 	addTV,
 	removeTV,
 	listAllTV,
+	readTVObject,
 	findGenreTV,
 	sortByRatingTV,
 	updateTVShow,
@@ -71,18 +71,15 @@ const app = async (args) => {
 			await findGenreMovie(genreObj);
 			mongoose.disconnect();
 			// list movies with awards
-		} else if (args.findAwardsMovie) {
+		} else if (args.listAwardsMovie) {
 			await findAwardsMovie();
 			mongoose.disconnect();
 			// list all movies
 		} else if (args.listAllMovies) {
 			await listAllMovie();
 			mongoose.disconnect();
-		} else if (args.listGenreMovie) {
-			await listAllByGenreMovie();
-			mongoose.disconnect();
-			// sort movies by rating
-		} else if (args.sortByRatingMovie) {
+			// list all movies in order of rating
+		} else if (args.listByRatingMovie) {
 			await sortByRatingMovie();
 			mongoose.disconnect();
 			// add TV show
@@ -107,6 +104,11 @@ const app = async (args) => {
 		} else if (args.listAllTV) {
 			await listAllTV();
 			mongoose.disconnect();
+			// view one TV show
+		} else if (args.readTV) {
+			const readObj = { title: args.title };
+			await readTVObject(readObj);
+			mongoose.disconnect();
 			// update TV show
 		} else if (args.updateTV) {
 			const updateTV = {
@@ -117,17 +119,17 @@ const app = async (args) => {
 			await updateTVShow(updateTV);
 			mongoose.disconnect();
 			// list all TV shows with a specific actor
-		} else if (args.findTVActor) {
+		} else if (args.listActorTV) {
 			const actorObj = { actor: args.actor };
 			await findActorTV(actorObj);
 			mongoose.disconnect();
 			// list all TV shows in specified genre
-		} else if (args.findGenreTV) {
+		} else if (args.listGenreTV) {
 			const genreObj = { genre: args.genre };
 			await findGenreTV(genreObj);
 			mongoose.disconnect();
 			// sort TV shows by rating
-		} else if (args.sortByRatingTV) {
+		} else if (args.listByRatingTV) {
 			await sortByRatingTV();
 			mongoose.disconnect();
 			// list all tv shows with awards
