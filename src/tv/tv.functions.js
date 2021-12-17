@@ -98,11 +98,12 @@ exports.sortByRatingTV = async () => {
 	}
 };
 
+// list ALL TV and ALL Movies...
 exports.listAll = async () => {
 	try {
 		const resultTV = await TV.find();
 		const resultMovie = await Movie.find();
-		console.log(`${resultTV} ${resultMovie}`);
+		console.log(`${resultTV}${resultMovie}`);
 	} catch (e) {
 		console.log(e);
 	}
