@@ -14,7 +14,7 @@ This is my CLI MongoDB / Mongoose project, allowing to add to two different coll
 - View all movies with awards: --listAwardsMovie
 - List all movies in order of rating: --listByRatingMovie 
 
-TV Specific:
+## TV Specific:
 - Add TV show to db: --addTV --title="title" --actor="actor" --rating=5 --genre="genre" --released=2001 --director="director" --award:true
 - Remove TV show from db: --removeTV --title="title"
 - List all TV shows: --listAllTV
@@ -25,6 +25,6 @@ TV Specific:
 - View all TV shows with awards: --listAwardsTV 
 - List all TV shows in order of rating: --listByRatingTV
 
-Other: 
+## Other: 
 - List all TV and Movie entries: --listAll
 
