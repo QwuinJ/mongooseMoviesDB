@@ -25,14 +25,13 @@ exports.removeMovieByName = async (movieObj) => {
 exports.readMovieObject = async (readObj) => {
 	try {
 		const result = await Movie.findOne({ title: readObj.title });
-		console.log(`Found one movie with the title ${readObj.title}`);
 		console.log(result);
 	} catch (e) {
 		console.log(e);
 	}
 };
 
-exports.updateOneByName = async (updateObj) => {
+exports.updateOneMovie = async (updateObj) => {
 	try {
 		const newKey = updateObj.key;
 		const newValue = updateObj.value;
@@ -48,9 +47,8 @@ exports.updateOneByName = async (updateObj) => {
 	}
 };
 
-exports.findActor = async (actorObj) => {
+exports.findActorMovie = async (actorObj) => {
 	try {
-		console.log('found function');
 		const actorFind = actorObj.actor;
 		const result = await Movie.find({ actor: actorFind });
 		console.log(result.map((result) => result.title).sort());
@@ -59,7 +57,7 @@ exports.findActor = async (actorObj) => {
 	}
 };
 
-exports.findGenre = async (genreObj) => {
+exports.findGenreMovie = async (genreObj) => {
 	try {
 		console.log('found function');
 		const result = await Movie.find({ genre: genreObj.genre });
@@ -69,7 +67,7 @@ exports.findGenre = async (genreObj) => {
 	}
 };
 
-exports.findAwards = async () => {
+exports.findAwardsMovie = async () => {
 	try {
 		console.log('found function');
 		const result = await Movie.find({ award: true });
@@ -79,9 +77,8 @@ exports.findAwards = async () => {
 	}
 };
 
-exports.listAll = async () => {
+exports.listAllMovie = async () => {
 	try {
-		console.log('found function');
 		const result = await Movie.find();
 		console.log(result.map((result) => result).sort());
 	} catch (e) {
@@ -89,7 +86,7 @@ exports.listAll = async () => {
 	}
 };
 
-exports.listAllByGenre = async () => {
+exports.listAllByGenreMovie = async () => {
 	try {
 		console.log('found function');
 		const result = await Movie.find();
@@ -99,11 +96,11 @@ exports.listAllByGenre = async () => {
 	}
 };
 
-exports.sortByRating = async () => {
+exports.sortByRatingMovie = async () => {
 	try {
 		console.log('found fucntion');
 		const result = await Movie.find().sort({ rating: -1 });
-		console.log(`Title: ${result.title} \nRating: ${result.rating}/10`);
+		console.log(result);
 	} catch (e) {
 		console.log(e);
 	}
