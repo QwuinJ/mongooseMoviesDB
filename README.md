@@ -3,7 +3,7 @@
 This is my CLI MongoDB / Mongoose project, allowing to add to two different collections within my database.
 
 # Commands:
-Movie Specific:
+## Movie Specific:
 - Add movie to db: --addMovie --title="title" --actor="actor" --rating=5 --genre="genre" --released=2001 --director="director" --award:true
 - Remove movie from db: --removeMovie --title="title"
 - View one movie entry: --readMovie --title="title"
